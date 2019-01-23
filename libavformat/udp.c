@@ -74,6 +74,16 @@
 #define UDP_MAX_PKT_SIZE 65536
 #define UDP_HEADER_SIZE 8
 
+#ifdef __ANDROID__
+  #define BROKEN_IP_MREQ_SOURCE_STRUCT
+  #undef HAVE_STRUCT_IP_MREQ_SOURCE
+#endif
+#ifdef BROKEN_IP_MREQ_SOURCE_STRUCT
+  #define S_ADDR_FIELD(theField) theField
+#else
+  #define S_ADDR_FIELD(theField) theField.s_addr
+#endif
+
 typedef struct UDPContext {
     const AVClass *class;
     int udp_fd;
@@ -287,12 +297,12 @@ static int udp_set_multicast_sources(URLContext *h,
             return AVERROR(EINVAL);
         }
 
-        mreqs.imr_multiaddr.s_addr = ((struct sockaddr_in *)addr)->sin_addr.s_addr;
+        mreqs.S_ADDR_FIELD(imr_multiaddr) = ((struct sockaddr_in *)addr)->sin_addr.s_addr;
         if (local_addr)
             mreqs.imr_interface= ((struct sockaddr_in *)local_addr)->sin_addr;
         else
-            mreqs.imr_interface.s_addr= INADDR_ANY;
-        mreqs.imr_sourceaddr.s_addr = ((struct sockaddr_in *)&sources[i])->sin_addr.s_addr;
+            mreqs.S_ADDR_FIELD(imr_interface)= INADDR_ANY;
+        mreqs.S_ADDR_FIELD(imr_sourceaddr) = ((struct sockaddr_in *)&sources[i])->sin_addr.s_addr;
 
         if (setsockopt(sockfd, IPPROTO_IP,
                        include ? IP_ADD_SOURCE_MEMBERSHIP : IP_BLOCK_SOURCE,
