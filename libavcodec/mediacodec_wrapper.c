@@ -2474,12 +2474,12 @@ static int mediacodec_ndk_infoOutputFormatChanged(FFAMediaCodec *ctx, ssize_t id
 
 static int mediacodec_ndk_getBufferFlagCodecConfig(FFAMediaCodec *ctx)
 {
-    return AMEDIACODEC_BUFFER_FLAG_CODEC_CONFIG;
+    return 2; //AMEDIACODEC_BUFFER_FLAG_CODEC_CONFIG; // API34
 }
 
 static int mediacodec_ndk_getBufferFlagEndOfStream(FFAMediaCodec *ctx)
 {
-    return AMEDIACODEC_BUFFER_FLAG_END_OF_STREAM;
+    return 4; //AMEDIACODEC_BUFFER_FLAG_END_OF_STREAM; // API34
 }
 
 static int mediacodec_ndk_getBufferFlagKeyFrame(FFAMediaCodec *ctx)
