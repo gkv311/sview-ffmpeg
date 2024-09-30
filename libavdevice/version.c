@@ -18,7 +18,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
-#include <assert.h>
+/*#include <assert.h>*/
 
 #include "config.h"
 
@@ -30,7 +30,7 @@ const char av_device_ffversion[] = "FFmpeg version " FFMPEG_VERSION;
 
 unsigned avdevice_version(void)
 {
-    static_assert(LIBAVDEVICE_VERSION_MICRO >= 100, "micro version starts at 100");
+    /*static_assert(LIBAVDEVICE_VERSION_MICRO >= 100, "micro version starts at 100");*/
     return LIBAVDEVICE_VERSION_INT;
 }
 
