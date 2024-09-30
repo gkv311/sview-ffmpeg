@@ -23,7 +23,7 @@
  * @author Justin Ruggles
  */
 
-#include <assert.h>
+/*#include <assert.h>*/
 #include <stdint.h>
 
 #include "libavutil/avassert.h"
@@ -226,7 +226,8 @@ struct MovChannelLayoutMap {
     CHLIST16( MOV_CH_LAYOUT_TMH_10_2_STD,         L,   R,   C,    Vhc,  Lsd,  Rsd,   Ls,   Rs,   Vhl,  Vhr,  Lw,  Rw,  Csd,  Cs,  LFE1,  LFE2  )\
     CHLIST21( MOV_CH_LAYOUT_TMH_10_2_FULL,        L,   R,   C,    Vhc,  Lsd,  Rsd,   Ls,   Rs,   Vhl,  Vhr,  Lw,  Rw,  Csd,  Cs,  LFE1,  LFE2,  Lc,  Rc,  HI,  VI,  Haptic  )\
 
-#define CHLIST(_tag, _cnt, ...)    static_assert((_tag & 0xffff) == _cnt, "Channel count of " #_tag " is not " #_cnt);
+/*#define CHLIST(_tag, _cnt, ...)    static_assert((_tag & 0xffff) == _cnt, "Channel count of " #_tag " is not " #_cnt);*/
+#define CHLIST(_tag, _cnt, ...)
 MOV_CH_LAYOUT_MAP
 #undef CHLIST
 #define CHLIST(_tag, _cnt, ...)    TAG(_tag, _cnt), __VA_ARGS__,

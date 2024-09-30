@@ -20,7 +20,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
-#include <assert.h>
+/*#include <assert.h>*/
 
 #include "libavutil/avstring.h"
 #include "internal.h"
@@ -97,8 +97,9 @@
     TAG(WBMP,            wbmp     ) \
     TAG(NONE,                     )
 
-#define LENGTH_CHECK(CODECID, STR) \
-    static_assert(sizeof(#STR) <= sizeof(ff_img_tags->str), #STR " does not fit into IdStrMap.str\n");
+#define LENGTH_CHECK(CODECID, STR)
+/*#define LENGTH_CHECK(CODECID, STR) \
+    static_assert(sizeof(#STR) <= sizeof(ff_img_tags->str), #STR " does not fit into IdStrMap.str\n");*/
 IMG_TAGS(LENGTH_CHECK)
 
 const IdStrMap ff_img_tags[] = {

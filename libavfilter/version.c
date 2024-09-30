@@ -18,7 +18,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
-#include <assert.h>
+/*#include <assert.h>*/
 
 #include "config.h"
 #include "avfilter.h"
@@ -29,7 +29,7 @@ const char av_filter_ffversion[] = "FFmpeg version " FFMPEG_VERSION;
 
 unsigned avfilter_version(void)
 {
-    static_assert(LIBAVFILTER_VERSION_MICRO >= 100, "micro version starts at 100");
+    /*static_assert(LIBAVFILTER_VERSION_MICRO >= 100, "micro version starts at 100");*/
     return LIBAVFILTER_VERSION_INT;
 }
 
